@@ -76,12 +76,29 @@
   }
   .mailbtn:hover{filter:brightness(1.05);box-shadow:0 10px 32px rgba(255,195,0,.55);text-shadow:none;}
 
+  .topnav{padding:22px 0 0;}
+  .topnav a{
+    color:var(--muted);font-size:.85rem;font-weight:700;letter-spacing:.04em;
+    text-decoration:none;border:none;display:inline-flex;align-items:center;gap:.4em;
+  }
+  .topnav a:hover{color:var(--blue);text-shadow:0 0 12px rgba(42,147,255,.5);}
+
+  .center{text-align:center;margin-top:28px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+  .navlink{
+    display:inline-flex;align-items:center;gap:.45em;font-weight:700;
+    color:#cfe0ff !important;border:1px solid rgba(42,147,255,.45);border-radius:12px;
+    padding:11px 22px;background:rgba(42,147,255,.08);text-decoration:none;
+  }
+  .navlink:hover{background:rgba(42,147,255,.16);box-shadow:0 0 20px rgba(42,147,255,.35);text-shadow:none;}
+
   .foot{text-align:center;color:var(--muted);font-size:.78rem;margin-top:44px;line-height:1.7;}
   .foot .creed{opacity:.65;letter-spacing:.08em;}
 </style>
 </head>
 <body>
 <div class="wrap">
+
+<nav class="topnav"><a href="./index.html">← Fukumax 2.0 トップ</a></nav>
 
 <header class="hero">
   <span class="badge">社畜パズル</span>
@@ -149,6 +166,11 @@
   <p class="who">運営者：fukumax ver2.0</p>
   <a class="mailbtn" href="mailto:fukumax.ver2.0@gmail.com">✉️ fukumax.ver2.0@gmail.com</a>
 </section>
+
+<p class="center">
+  <a class="navlink" href="./index.html">🏠 トップへ戻る</a>
+  <a class="navlink" href="./support.html">🛟 サポート</a>
+</p>
 
 <p class="foot">
   <span class="creed">今週の社訓　1. 我慢　2. 忍耐　3. 従順</span><br>

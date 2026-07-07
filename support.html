@@ -79,7 +79,14 @@
     padding:11px 22px;background:rgba(42,147,255,.08);
   }
   .navlink:hover{background:rgba(42,147,255,.16);box-shadow:0 0 20px rgba(42,147,255,.35);text-shadow:none;}
-  .center{text-align:center;margin-top:26px;}
+  .center{text-align:center;margin-top:28px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+
+  .topnav{padding:22px 0 0;}
+  .topnav a{
+    color:var(--muted);font-size:.85rem;font-weight:700;letter-spacing:.04em;
+    text-decoration:none;border:none;display:inline-flex;align-items:center;gap:.4em;
+  }
+  .topnav a:hover{color:var(--blue);text-shadow:0 0 12px rgba(42,147,255,.5);}
 
   .foot{text-align:center;color:var(--muted);font-size:.78rem;margin-top:44px;line-height:1.7;}
   .foot .creed{opacity:.65;letter-spacing:.08em;}
@@ -87,6 +94,8 @@
 </head>
 <body>
 <div class="wrap">
+
+<nav class="topnav"><a href="./index.html">← Fukumax 2.0 トップ</a></nav>
 
 <header class="hero">
   <span class="badge">社畜パズル</span>
@@ -115,6 +124,7 @@
 </section>
 
 <p class="center">
+  <a class="navlink" href="./index.html">🏠 トップへ戻る</a>
   <a class="navlink" href="./privacy.html">🔒 プライバシーポリシー</a>
 </p>
 
