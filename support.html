@@ -5,39 +5,123 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>社畜パズル サポート</title>
 <style>
-  :root { color-scheme: light dark; }
-  body { font-family: -apple-system, "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
-    line-height: 1.85; color: #222; background: #fff; margin: 0; padding: 24px; }
-  .wrap { max-width: 760px; margin: 0 auto; }
-  h1 { font-size: 1.7rem; border-bottom: 3px solid #1F3864; padding-bottom: 8px; }
-  h2 { font-size: 1.2rem; margin-top: 2em; color: #1F3864; }
-  .meta { color: #666; font-size: .9rem; }
-  ul { padding-left: 1.2em; } li { margin: .4em 0; }
-  a { color: #2E5496; }
-  .note { background: #f2f5fb; border-radius: 8px; padding: 12px 16px; font-size: .92rem; }
-  @media (prefers-color-scheme: dark) { body { background:#15172b; color:#e7e9f5; } h2{color:#9db2e8;} .note{background:#20233f;} a{color:#9db2e8;} }
+  :root{
+    color-scheme: dark;
+    --bg:#0B0810; --ink:#ECEAF6; --muted:#9A93AD;
+    --yellow:#FFC300; --blue:#2A93FF; --purple:#A06CF0; --green:#27AE60; --red:#EB4637;
+    --card:rgba(255,255,255,.045); --line:rgba(255,255,255,.10);
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0; color:var(--ink); padding:0 20px 72px;
+    font-family:-apple-system,"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;
+    line-height:1.9; -webkit-font-smoothing:antialiased; letter-spacing:.01em;
+    background:
+      radial-gradient(1100px 560px at 12% -8%, rgba(42,147,255,.20), transparent 60%),
+      radial-gradient(980px 680px at 112% 6%, rgba(160,108,240,.18), transparent 55%),
+      radial-gradient(860px 520px at 50% 122%, rgba(255,195,0,.12), transparent 60%),
+      linear-gradient(180deg,#0B0810,#0E0A18 42%,#0B0810);
+    background-attachment:fixed; min-height:100vh;
+  }
+  .wrap{max-width:780px;margin:0 auto;}
+
+  .hero{padding:66px 0 26px;text-align:center;}
+  .badge{
+    display:inline-block;font-weight:800;letter-spacing:.16em;font-size:.72rem;
+    color:#0B0810;background:linear-gradient(180deg,#FFD24D,#FFC300);
+    padding:6px 14px;border-radius:999px;box-shadow:0 0 24px rgba(255,195,0,.5);
+  }
+  .logo{
+    font-size:clamp(2.2rem,7vw,3.4rem);font-weight:900;margin:.42em 0 .12em;
+    background:linear-gradient(180deg,#ffffff,#c9d3ff);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+    text-shadow:0 0 34px rgba(42,147,255,.35);
+  }
+  .tagline{color:var(--yellow);font-weight:700;margin:.2em 0;text-shadow:0 0 18px rgba(255,195,0,.4);}
+
+  .card{
+    background:var(--card);border:1px solid var(--line);border-left:3px solid var(--ac,var(--yellow));
+    border-radius:16px;padding:20px 24px;margin:16px 0;
+    box-shadow:0 12px 40px rgba(0,0,0,.4);
+    -webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);
+  }
+  .card h2{
+    margin:0 0 .6em;font-size:1.14rem;font-weight:800;color:#fff;
+    display:flex;align-items:center;gap:.62em;
+  }
+  .num{
+    flex:0 0 auto;width:1.9em;height:1.9em;border-radius:10px;
+    display:grid;place-items:center;font-size:.95em;
+    background:var(--ac,var(--yellow));box-shadow:0 0 18px var(--ac,var(--yellow));
+  }
+  .card p{margin:.5em 0;}
+  .faq{list-style:none;padding:0;margin:.3em 0;}
+  .faq li{margin:.9em 0;padding-left:1.1em;position:relative;}
+  .faq li::before{content:"Q";position:absolute;left:0;top:0;color:var(--ac,var(--yellow));font-weight:900;}
+  .faq strong{color:#fff;}
+
+  a{color:var(--blue);text-decoration:none;border-bottom:1px solid rgba(42,147,255,.35);}
+  a:hover{color:#7FBBFF;text-shadow:0 0 12px rgba(42,147,255,.6);}
+
+  .contact{text-align:center;}
+  .mailbtn{
+    display:inline-flex;align-items:center;gap:.5em;font-weight:800;
+    color:#0B0810 !important;border:none;border-bottom:none;
+    background:linear-gradient(180deg,#FFD24D,#FFC300);
+    padding:13px 24px;border-radius:12px;margin-top:6px;
+    box-shadow:0 8px 26px rgba(255,195,0,.4), inset 0 1px 0 rgba(255,255,255,.45);
+  }
+  .mailbtn:hover{filter:brightness(1.05);box-shadow:0 10px 32px rgba(255,195,0,.55);text-shadow:none;}
+
+  .navlink{
+    display:inline-flex;align-items:center;gap:.45em;font-weight:700;
+    color:#cfe0ff !important;border:1px solid rgba(42,147,255,.45);border-radius:12px;
+    padding:11px 22px;background:rgba(42,147,255,.08);
+  }
+  .navlink:hover{background:rgba(42,147,255,.16);box-shadow:0 0 20px rgba(42,147,255,.35);text-shadow:none;}
+  .center{text-align:center;margin-top:26px;}
+
+  .foot{text-align:center;color:var(--muted);font-size:.78rem;margin-top:44px;line-height:1.7;}
+  .foot .creed{opacity:.65;letter-spacing:.08em;}
 </style>
 </head>
 <body>
 <div class="wrap">
-<h1>サポート</h1>
-<p class="meta">社畜パズル</p>
 
-<h2>このアプリについて</h2>
-<p>「社畜パズル」は、役職の顔ピースを落として合体させ、社長を目指す落ち物パズルゲームです。自分や仲間の顔・声を取り込んで遊べます（取り込んだ写真・音声は端末内でのみ利用され、外部に送信されません）。</p>
+<header class="hero">
+  <span class="badge">社畜パズル</span>
+  <h1 class="logo">サポート</h1>
+  <p class="tagline">同じ役職で合体して出世せよ！</p>
+</header>
 
-<h2>よくある質問</h2>
-<ul>
-  <li><strong>取り込んだ写真や声は外部に送られますか？</strong><br>いいえ。すべて端末内でのみ処理・保存され、外部送信・共有はしません。アプリ内の操作で削除できます。</li>
-  <li><strong>写真・マイクの許可を求められます。</strong><br>顔ピースの作成・声の録音のために使用します。許可しない場合、その機能は利用できません。</li>
-  <li><strong>広告について。</strong><br>本アプリには広告が表示されます。トラッキングの可否は端末の設定・許可ダイアログで選択できます。</li>
-</ul>
+<section class="card" style="--ac:var(--blue)">
+  <h2><span class="num">🎮</span>このアプリについて</h2>
+  <p>「社畜パズル」は、役職の顔ピースを落として合体させ、社長を目指す落ち物パズルゲームです。自分や仲間の顔・声を取り込んで遊べます（取り込んだ写真・音声は端末内でのみ利用され、外部に送信されません）。</p>
+</section>
 
-<h2>お問い合わせ</h2>
-<p class="note">ご要望・不具合のご連絡はこちらまで：<br>
-連絡先メールアドレス：<a href="mailto:例）doctor0siki@gmail.com">例）doctor0siki@gmail.com</a></p>
+<section class="card" style="--ac:var(--purple)">
+  <h2><span class="num">❓</span>よくある質問</h2>
+  <ul class="faq">
+    <li><strong>取り込んだ写真や声は外部に送られますか？</strong><br>いいえ。すべて端末内でのみ処理・保存され、外部送信・共有はしません。アプリ内の操作で削除できます。</li>
+    <li><strong>写真・マイクの許可を求められます。</strong><br>顔ピースの作成・声の録音のために使用します。許可しない場合、その機能は利用できません。</li>
+    <li><strong>広告について。</strong><br>本アプリには広告が表示されます。トラッキングの可否は端末の設定・許可ダイアログで選択できます。</li>
+  </ul>
+</section>
 
-<p><a href="./privacy.html">プライバシーポリシー</a></p>
+<section class="card contact" style="--ac:var(--yellow)">
+  <h2><span class="num">✉️</span>お問い合わせ</h2>
+  <p>ご要望・不具合のご連絡はこちらまで：</p>
+  <a class="mailbtn" href="mailto:fukumax.ver2.0@gmail.com">✉️ fukumax.ver2.0@gmail.com</a>
+</section>
+
+<p class="center">
+  <a class="navlink" href="./privacy.html">🔒 プライバシーポリシー</a>
+</p>
+
+<p class="foot">
+  <span class="creed">今週の社訓　1. 我慢　2. 忍耐　3. 従順</span><br>
+  © 社畜パズル
+</p>
 
 </div>
 </body>
