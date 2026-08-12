@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>推しバナ サポート</title>
+<style>
+  :root{
+    color-scheme: dark;
+    --bg:#0B0810; --ink:#ECEAF6; --muted:#9A93AD;
+    --pink:#FF4FB0; --violet:#A855F7; --cyan:#4CC9F0; --yellow:#FFC300;
+    --card:rgba(255,255,255,.045); --line:rgba(255,255,255,.10);
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0; color:var(--ink); padding:0 20px 72px;
+    font-family:-apple-system,"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;
+    line-height:1.9; -webkit-font-smoothing:antialiased; letter-spacing:.01em;
+    background:
+      radial-gradient(1100px 560px at 12% -8%, rgba(255,79,176,.22), transparent 60%),
+      radial-gradient(980px 680px at 112% 6%, rgba(168,85,247,.20), transparent 55%),
+      radial-gradient(860px 520px at 50% 122%, rgba(76,201,240,.12), transparent 60%),
+      linear-gradient(180deg,#0B0810,#120A1C 42%,#0B0810);
+    background-attachment:fixed; min-height:100vh;
+  }
+  .wrap{max-width:780px;margin:0 auto;}
+
+  .hero{padding:66px 0 26px;text-align:center;}
+  .appicon{
+    width:104px;height:104px;border-radius:24px;display:block;margin:0 auto 16px;
+    border:1px solid rgba(255,255,255,.14);
+    box-shadow:0 14px 44px rgba(255,79,176,.35), 0 0 0 6px rgba(168,85,247,.10);
+  }
+  .badge{
+    display:inline-block;font-weight:800;letter-spacing:.16em;font-size:.72rem;
+    color:#0B0810;background:linear-gradient(180deg,#FF7AC6,#FF4FB0);
+    padding:6px 14px;border-radius:999px;box-shadow:0 0 24px rgba(255,79,176,.55);
+  }
+  .logo{
+    font-size:clamp(2.2rem,7vw,3.4rem);font-weight:900;margin:.42em 0 .12em;
+    background:linear-gradient(180deg,#ffffff,#e9ccff);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+    text-shadow:0 0 34px rgba(168,85,247,.45);
+  }
+  .tagline{color:var(--pink);font-weight:700;margin:.2em 0;text-shadow:0 0 18px rgba(255,79,176,.5);}
+
+  .card{
+    background:var(--card);border:1px solid var(--line);border-left:3px solid var(--ac,var(--pink));
+    border-radius:16px;padding:20px 24px;margin:16px 0;
+    box-shadow:0 12px 40px rgba(0,0,0,.4);
+    -webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);
+  }
+  .card h2{
+    margin:0 0 .6em;font-size:1.14rem;font-weight:800;color:#fff;
+    display:flex;align-items:center;gap:.62em;
+  }
+  .num{
+    flex:0 0 auto;width:1.9em;height:1.9em;border-radius:10px;
+    display:grid;place-items:center;font-size:.95em;
+    background:var(--ac,var(--pink));box-shadow:0 0 18px var(--ac,var(--pink));
+  }
+  .card p{margin:.5em 0;}
+  .devices{
+    margin:1.1em 0 .2em;padding:12px 16px;border-radius:12px;font-weight:700;
+    background:rgba(168,85,247,.12);border:1px solid rgba(168,85,247,.32);
+  }
+  .devices .note{color:var(--muted);font-weight:400;font-size:.88rem;}
+  ul{padding-left:1.2em;margin:.5em 0;}
+  li{margin:.45em 0;}
+  li::marker{color:var(--ac,var(--pink));}
+  .faq{list-style:none;padding:0;margin:.3em 0;}
+  .faq li{margin:.9em 0;padding-left:1.1em;position:relative;}
+  .faq li::before{content:"Q";position:absolute;left:0;top:0;color:var(--ac,var(--pink));font-weight:900;}
+  .faq strong{color:#fff;}
+
+  a{color:var(--cyan);text-decoration:none;border-bottom:1px solid rgba(76,201,240,.35);}
+  a:hover{color:#8FE0FF;text-shadow:0 0 12px rgba(76,201,240,.6);}
+
+  .contact{text-align:center;}
+  .mailbtn{
+    display:inline-flex;align-items:center;gap:.5em;font-weight:800;
+    color:#0B0810 !important;border:none;border-bottom:none;
+    background:linear-gradient(180deg,#FF7AC6,#FF4FB0);
+    padding:13px 24px;border-radius:12px;margin-top:6px;
+    box-shadow:0 8px 26px rgba(255,79,176,.45), inset 0 1px 0 rgba(255,255,255,.45);
+  }
+  .mailbtn:hover{filter:brightness(1.05);box-shadow:0 10px 32px rgba(255,79,176,.6);text-shadow:none;}
+
+  .navlink{
+    display:inline-flex;align-items:center;gap:.45em;font-weight:700;
+    color:#f0d9ff !important;border:1px solid rgba(168,85,247,.5);border-radius:12px;
+    padding:11px 22px;background:rgba(168,85,247,.10);
+  }
+  .navlink:hover{background:rgba(168,85,247,.20);box-shadow:0 0 20px rgba(168,85,247,.4);text-shadow:none;}
+  .center{text-align:center;margin-top:28px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+
+  .topnav{padding:22px 0 0;}
+  .topnav a{
+    color:var(--muted);font-size:.85rem;font-weight:700;letter-spacing:.04em;
+    text-decoration:none;border:none;display:inline-flex;align-items:center;gap:.4em;
+  }
+  .topnav a:hover{color:var(--pink);text-shadow:0 0 12px rgba(255,79,176,.5);}
+
+  .foot{text-align:center;color:var(--muted);font-size:.78rem;margin-top:44px;line-height:1.7;}
+  .foot .creed{opacity:.65;letter-spacing:.08em;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<nav class="topnav"><a href="./index.html">← Fukumax 2.0 トップ</a></nav>
+
+<header class="hero">
+  <img class="appicon" src="./images/oshibana-icon.png" alt="推しバナ アプリアイコン">
+  <span class="badge">推しバナ - 電光掲示板</span>
+  <h1 class="logo">サポート</h1>
+  <p class="tagline">推しの色で光らせる、応援電光掲示板</p>
+</header>
+
+<section class="card" style="--ac:var(--violet)">
+  <h2><span class="num">📣</span>このアプリについて</h2>
+  <p>「推しバナ - 電光掲示板」は、スマホの画面を応援用の電光掲示板にするアプリです。推しの名前やメンバーカラーを登録しておけば、その色で光るボードをすぐに作れます。</p>
+  <ul>
+    <li>横書きで右から左へ流す／縦書きで下から上へ流す、どちらも選べます。</li>
+    <li>短い文言は<strong>流さず止めて大きく</strong>表示できます（物販列で掲げるときなど）。</li>
+    <li>点滅・明滅のほか、レインボー・ウェーブなどの演出を選べます。</li>
+    <li>背景はプリセット画像・単色・端末内の写真から選べます。</li>
+    <li>日本語・한국어・English・简体・繁體のテンプレート文が入っています。</li>
+    <li>アカウント登録は不要。通信のない会場内でも動作します。</li>
+  </ul>
+  <p class="devices">📱 対応端末：iPhone ／ iPad ／ Android<br>
+  <span class="note">iPad や大画面の端末では画面幅に合わせて表示が広がるため、より遠くからでも読みやすくなります。</span></p>
+</section>
+
+<section class="card" style="--ac:var(--pink)">
+  <h2><span class="num">🎤</span>会場モードの使い方</h2>
+  <p>ボードを選んで会場モードに入ると、全画面・画面の明るさ最大・自動ロック無効の状態で再生されます。ライブ中に画面が暗くなったり消えたりしません。</p>
+  <ul>
+    <li><strong>抜けるとき：</strong>右上の ✕ ボタンを押す、または画面を2秒間の長押し。暗い会場で操作を誤っても抜けられるよう、方法を2つ用意しています。</li>
+    <li>再生中は誤操作を防ぐため、通常のタップは効きません。</li>
+    <li>再生中は広告を表示しません。</li>
+    <li>会場によっては電子機器・光るものの持ち込みや使用が制限されています。<strong>必ず会場・公演のルールに従ってご利用ください。</strong></li>
+  </ul>
+</section>
+
+<section class="card" style="--ac:var(--cyan)">
+  <h2><span class="num">❓</span>よくある質問</h2>
+  <ul class="faq">
+    <li><strong>会場モードから抜けられません。</strong><br>右上の ✕ ボタンを押すか、画面を2秒間長押ししてください。どちらでも終了できます。</li>
+    <li><strong>色やフォント、演出を増やしたい。</strong><br>「演出を増やす」画面で広告を最後まで視聴すると、カラーパック・フォントパック・エフェクトパック・ふちどりパックが解放されます。<strong>課金は一切ありません。</strong></li>
+    <li><strong>広告を見たのに解放されません。</strong><br>広告を最後まで視聴すると解放されます。途中で閉じた場合や広告が読み込めなかった場合は解放されないため、通信状況を確認して時間をおいてお試しください。</li>
+    <li><strong>作ったボードは他の端末に移せますか？</strong><br>いいえ。ボードはすべて端末内にのみ保存されるため、機種変更やアプリの削除では引き継げません。バックアップ・復元の機能は提供していません。</li>
+    <li><strong>写真の許可を求められます。</strong><br>ボードの背景に写真を使うときだけ使用します。選んだ画像はアプリ内に複製して保存され、外部へ送信されることはありません。許可しない場合も、プリセット背景・単色でご利用いただけます。</li>
+    <li><strong>背景の写真の上だと文字が読みにくいです。</strong><br>文字のふちどりを太くすると輪郭がはっきりします。暗い会場では、明るい文字色＋太いふちどりの組み合わせが読みやすくなります。</li>
+    <li><strong>文字が画面に収まりません。</strong><br>表示を「流す」に切り替えると長い文章も表示できます。「止める」は画面に収まる大きさまで詰めて静止させるため、短い文言に向いています。</li>
+    <li><strong>バッテリーの消費が気になります。</strong><br>会場モードは明るさを最大にして画面を点灯し続けるため、消費が大きくなります。長時間の使用ではモバイルバッテリーのご用意をおすすめします。</li>
+    <li><strong>入力した文字が使えないと表示されます。</strong><br>他の方への迷惑や誹謗中傷を防ぐため、一部の語句は表示できないようにしています。ご了承ください。</li>
+  </ul>
+</section>
+
+<section class="card contact" style="--ac:var(--pink)">
+  <h2><span class="num">✉️</span>お問い合わせ</h2>
+  <p>ご要望・不具合のご連絡はこちらまで：</p>
+  <a class="mailbtn" href="mailto:fukumax.ver2.0@gmail.com">✉️ fukumax.ver2.0@gmail.com</a>
+</section>
+
+<p class="center">
+  <a class="navlink" href="./index.html">🏠 トップへ戻る</a>
+  <a class="navlink" href="./oshibana-privacy.html">🔒 プライバシーポリシー</a>
+</p>
+
+<p class="foot">
+  <span class="creed">推しの色で、いちばん前の空気を光らせる</span><br>
+  © 推しバナ - 電光掲示板
+</p>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>推しバナ プライバシーポリシー</title>
+<style>
+  :root{
+    color-scheme: dark;
+    --bg:#0B0810; --ink:#ECEAF6; --muted:#9A93AD;
+    --pink:#FF4FB0; --violet:#A855F7; --cyan:#4CC9F0; --yellow:#FFC300;
+    --card:rgba(255,255,255,.045); --line:rgba(255,255,255,.10);
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0; color:var(--ink); padding:0 20px 72px;
+    font-family:-apple-system,"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;
+    line-height:1.9; -webkit-font-smoothing:antialiased; letter-spacing:.01em;
+    background:
+      radial-gradient(1100px 560px at 12% -8%, rgba(255,79,176,.20), transparent 60%),
+      radial-gradient(980px 680px at 112% 6%, rgba(168,85,247,.18), transparent 55%),
+      radial-gradient(860px 520px at 50% 122%, rgba(76,201,240,.12), transparent 60%),
+      linear-gradient(180deg,#0B0810,#120A1C 42%,#0B0810);
+    background-attachment:fixed; min-height:100vh;
+  }
+  .wrap{max-width:780px;margin:0 auto;}
+
+  .hero{padding:66px 0 26px;text-align:center;}
+  .appicon{
+    width:96px;height:96px;border-radius:22px;display:block;margin:0 auto 16px;
+    border:1px solid rgba(255,255,255,.14);
+    box-shadow:0 14px 44px rgba(255,79,176,.32), 0 0 0 6px rgba(168,85,247,.10);
+  }
+  .badge{
+    display:inline-block;font-weight:800;letter-spacing:.16em;font-size:.72rem;
+    color:#0B0810;background:linear-gradient(180deg,#FF7AC6,#FF4FB0);
+    padding:6px 14px;border-radius:999px;box-shadow:0 0 24px rgba(255,79,176,.55);
+  }
+  .logo{
+    font-size:clamp(2rem,6.4vw,3.1rem);font-weight:900;margin:.42em 0 .12em;
+    background:linear-gradient(180deg,#ffffff,#e9ccff);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+    text-shadow:0 0 34px rgba(168,85,247,.45);
+  }
+  .tagline{color:var(--pink);font-weight:700;margin:.2em 0;text-shadow:0 0 18px rgba(255,79,176,.5);}
+  .meta{color:var(--muted);font-size:.86rem;margin:.4em 0 0;}
+
+  .lead{color:#c8c4d6;margin:8px 0 26px;}
+
+  .card{
+    background:var(--card);border:1px solid var(--line);border-left:3px solid var(--ac,var(--pink));
+    border-radius:16px;padding:20px 24px;margin:16px 0;
+    box-shadow:0 12px 40px rgba(0,0,0,.4);
+    -webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);
+  }
+  .card h2{
+    margin:0 0 .6em;font-size:1.14rem;font-weight:800;color:#fff;
+    display:flex;align-items:center;gap:.62em;
+  }
+  .num{
+    flex:0 0 auto;width:1.9em;height:1.9em;border-radius:10px;
+    display:grid;place-items:center;font-size:.82em;font-weight:900;color:#0B0810;
+    background:var(--ac,var(--pink));box-shadow:0 0 18px var(--ac,var(--pink));
+  }
+  .card p{margin:.5em 0;}
+  ul{padding-left:1.2em;margin:.5em 0;}
+  li{margin:.45em 0;}
+  li::marker{color:var(--ac,var(--pink));}
+
+  .note{
+    background:rgba(168,85,247,.12);border:1px solid rgba(168,85,247,.32);
+    border-left:4px solid var(--violet);border-radius:12px;
+    padding:14px 18px;margin:22px 0;
+  }
+
+  a{color:var(--cyan);text-decoration:none;border-bottom:1px solid rgba(76,201,240,.35);}
+  a:hover{color:#8FE0FF;text-shadow:0 0 12px rgba(76,201,240,.6);}
+
+  .contact{text-align:center;}
+  .contact .who{color:var(--muted);font-size:.9rem;margin:.2em 0 1em;}
+  .mailbtn{
+    display:inline-flex;align-items:center;gap:.5em;font-weight:800;
+    color:#0B0810 !important;border:none;border-bottom:none;
+    background:linear-gradient(180deg,#FF7AC6,#FF4FB0);
+    padding:13px 24px;border-radius:12px;
+    box-shadow:0 8px 26px rgba(255,79,176,.45), inset 0 1px 0 rgba(255,255,255,.45);
+  }
+  .mailbtn:hover{filter:brightness(1.05);box-shadow:0 10px 32px rgba(255,79,176,.6);text-shadow:none;}
+
+  .topnav{padding:22px 0 0;}
+  .topnav a{
+    color:var(--muted);font-size:.85rem;font-weight:700;letter-spacing:.04em;
+    text-decoration:none;border:none;display:inline-flex;align-items:center;gap:.4em;
+  }
+  .topnav a:hover{color:var(--pink);text-shadow:0 0 12px rgba(255,79,176,.5);}
+
+  .center{text-align:center;margin-top:28px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+  .navlink{
+    display:inline-flex;align-items:center;gap:.45em;font-weight:700;
+    color:#f0d9ff !important;border:1px solid rgba(168,85,247,.5);border-radius:12px;
+    padding:11px 22px;background:rgba(168,85,247,.10);text-decoration:none;
+  }
+  .navlink:hover{background:rgba(168,85,247,.20);box-shadow:0 0 20px rgba(168,85,247,.4);text-shadow:none;}
+
+  .foot{text-align:center;color:var(--muted);font-size:.78rem;margin-top:44px;line-height:1.7;}
+  .foot .creed{opacity:.65;letter-spacing:.08em;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<nav class="topnav"><a href="./index.html">← Fukumax 2.0 トップ</a></nav>
+
+<header class="hero">
+  <img class="appicon" src="./images/oshibana-icon.png" alt="推しバナ アプリアイコン">
+  <span class="badge">推しバナ - 電光掲示板</span>
+  <h1 class="logo">プライバシーポリシー</h1>
+  <p class="tagline">推しの色で光らせる、応援電光掲示板</p>
+  <p class="meta">アプリ名：推しバナ - 電光掲示板　／　最終更新日：2026年7月29日</p>
+</header>
+
+<p class="lead">本プライバシーポリシーは、本アプリ「推しバナ - 電光掲示板」（以下「本アプリ」）における利用者情報の取り扱いについて定めるものです。本アプリをご利用いただく前に、本ポリシーをお読みください。</p>
+
+<section class="card" style="--ac:var(--violet)">
+  <h2><span class="num">1</span>基本方針</h2>
+  <p>本アプリは、アカウント登録が不要です。本アプリで作成したボードの文字、推しの名前やメンバーカラー、選択した背景画像といった利用者が入力・作成した情報は、<strong>すべて端末内にのみ保存され、開発者のサーバーへ送信されることはありません</strong>。開発者がこれらの内容を閲覧・取得することはできません。</p>
+</section>
+
+<div class="note">
+  本アプリが外部と通信するのは、下記「広告について」に記載した広告の配信のみです。ボードの作成・保存・表示は、通信のない状態でも動作します。
+</div>
+
+<section class="card" style="--ac:var(--pink)">
+  <h2><span class="num">2</span>作成したデータの取り扱い</h2>
+  <ul>
+    <li>ボードの文字・色・書体・演出などの設定は、端末内のデータベースに保存されます。</li>
+    <li>推しの名前・グループ名・メンバーカラーも同様に端末内にのみ保存されます。</li>
+    <li>これらはアプリを削除すると端末から消去されます。バックアップや復元の機能は提供していません。</li>
+  </ul>
+</section>
+
+<section class="card" style="--ac:var(--cyan)">
+  <h2><span class="num">3</span>写真の取り扱い</h2>
+  <p>ボードの背景に写真を使う場合、端末の写真ライブラリへのアクセス許可を求めます。選択された画像は<strong>本アプリの領域内に複製して保存され、外部へ送信・共有されることはありません</strong>。写真ライブラリ全体を読み取ることはなく、利用者が選んだ画像のみを扱います。</p>
+</section>
+
+<section class="card" style="--ac:var(--violet)">
+  <h2><span class="num">4</span>広告について</h2>
+  <p>本アプリは無料で提供しており、収益は広告によるものです。広告配信には <strong>Google AdMob</strong> を利用しています。</p>
+  <ul>
+    <li>広告の配信のために、広告識別子・端末情報・IPアドレスなどが Google により収集される場合があります。</li>
+    <li>これらの収集・利用は Google のプライバシーポリシーに基づきます。詳細は
+      <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener">Google のポリシーと規約</a>をご確認ください。</li>
+    <li>会場モードでの再生中は、広告を表示しません。</li>
+  </ul>
+</section>
+
+<section class="card" style="--ac:var(--pink)">
+  <h2><span class="num">5</span>トラッキングについて</h2>
+  <p>広告のパーソナライズに用いられる広告識別子の利用は、端末の設定により利用者が選択できます。</p>
+  <ul>
+    <li><strong>iPhone・iPad（iOS / iPadOS）：</strong>広告識別子（IDFA）の利用について、<strong>App Tracking Transparency</strong> の仕組みにより許可・拒否を選択できます。この設定は端末の「設定」からいつでも変更できます。</li>
+    <li><strong>Android：</strong>広告 ID のパーソナライズの無効化・削除は、端末の「設定」内のプライバシー（広告）から行えます。</li>
+    <li>いずれの場合も許可しないことで本アプリの機能が制限されることはなく、<strong>すべての機能をご利用いただけます</strong>（表示される広告がパーソナライズされないものに変わります）。</li>
+  </ul>
+</section>
+
+<section class="card" style="--ac:var(--cyan)">
+  <h2><span class="num">6</span>第三者への提供</h2>
+  <p>利用者が本アプリ内で作成・入力した情報を、開発者が第三者へ提供することは<strong>一切ありません</strong>。そもそも開発者のサーバーへ送信していないため、提供する情報を保有していません。上記の広告配信に伴う情報の取り扱いは、Google AdMob によるものです。</p>
+</section>
+
+<section class="card" style="--ac:var(--violet)">
+  <h2><span class="num">7</span>年齢について</h2>
+  <p>本アプリは子ども向けに設計されたものではありません。広告を含むため、各ストアでは子ども向け以外のアプリとして年齢設定を行っています（App Store では 12+ を想定）。</p>
+</section>
+
+<section class="card" style="--ac:var(--pink)">
+  <h2><span class="num">8</span>本ポリシーの変更</h2>
+  <p>本ポリシーの内容は、必要に応じて変更することがあります。変更した場合は、本ページの最終更新日を改めます。</p>
+</section>
+
+<section class="card contact" style="--ac:var(--cyan)">
+  <h2><span class="num">9</span>お問い合わせ</h2>
+  <p>本ポリシーおよび本アプリに関するお問い合わせ先：</p>
+  <p class="who">運営者：fukumax ver2.0</p>
+  <a class="mailbtn" href="mailto:fukumax.ver2.0@gmail.com">✉️ fukumax.ver2.0@gmail.com</a>
+</section>
+
+<p class="center">
+  <a class="navlink" href="./index.html">🏠 トップへ戻る</a>
+  <a class="navlink" href="./oshibana-support.html">🛟 サポート</a>
+</p>
+
+<p class="foot">
+  <span class="creed">推しの色で、いちばん前の空気を光らせる</span><br>
+  © 推しバナ - 電光掲示板
+</p>
+
+</div>
+</body>
+</html>
